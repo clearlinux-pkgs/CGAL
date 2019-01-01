@@ -3324,15 +3324,6 @@ popd
 /usr/lib64/libCGAL_ImageIO.so
 /usr/lib64/libCGAL_Qt5.so
 
-%files doc
-%defattr(0644,root,root,0755)
-/usr/share/doc/CGAL-4.13/AUTHORS
-/usr/share/doc/CGAL-4.13/CHANGES.md
-/usr/share/doc/CGAL-4.13/LICENSE
-/usr/share/doc/CGAL-4.13/LICENSE.FREE_USE
-/usr/share/doc/CGAL-4.13/LICENSE.GPL
-/usr/share/doc/CGAL-4.13/LICENSE.LGPL
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libCGAL.so.13
