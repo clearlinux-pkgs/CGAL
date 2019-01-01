@@ -4,7 +4,7 @@
 #
 Name     : CGAL
 Version  : 4.13
-Release  : 2
+Release  : 3
 URL      : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.13/CGAL-4.13.tar.xz
 Source0  : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.13/CGAL-4.13.tar.xz
 Summary  : No detailed summary available
