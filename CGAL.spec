@@ -4,7 +4,7 @@
 #
 Name     : CGAL
 Version  : %2f.4.13
-Release  : 1
+Release  : 2
 URL      : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.13/CGAL-4.13.tar.xz
 Source0  : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.13/CGAL-4.13.tar.xz
 Summary  : No detailed summary available
@@ -16,6 +16,7 @@ Requires: CGAL-license = %{version}-%{release}
 Requires: CGAL-man = %{version}-%{release}
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
+BuildRequires : buildreq-kde
 BuildRequires : doxygen
 BuildRequires : gmp-dev
 BuildRequires : mesa-dev
@@ -91,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1546355017
+export SOURCE_DATE_EPOCH=1546355219
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -99,7 +100,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1546355017
+export SOURCE_DATE_EPOCH=1546355219
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/CGAL
 cp LICENSE.BSL %{buildroot}/usr/share/package-licenses/CGAL/LICENSE.BSL
@@ -3198,6 +3199,9 @@ popd
 /usr/lib64/cmake/CGAL/CGAL_ImageIOLibConfig.cmake
 /usr/lib64/cmake/CGAL/CGAL_Locate_CGAL_TAUCS.cmake
 /usr/lib64/cmake/CGAL/CGAL_Macros.cmake
+/usr/lib64/cmake/CGAL/CGAL_Qt5Exports-relwithdebinfo.cmake
+/usr/lib64/cmake/CGAL/CGAL_Qt5Exports.cmake
+/usr/lib64/cmake/CGAL/CGAL_Qt5LibConfig.cmake
 /usr/lib64/cmake/CGAL/CGAL_Qt5_moc_and_resource_files.cmake
 /usr/lib64/cmake/CGAL/CGAL_SCM.cmake
 /usr/lib64/cmake/CGAL/CGAL_SetupBoost.cmake
@@ -3318,6 +3322,7 @@ popd
 /usr/lib64/libCGAL.so
 /usr/lib64/libCGAL_Core.so
 /usr/lib64/libCGAL_ImageIO.so
+/usr/lib64/libCGAL_Qt5.so
 
 %files doc
 %defattr(0644,root,root,0755)
@@ -3336,6 +3341,8 @@ popd
 /usr/lib64/libCGAL_Core.so.13.0.2
 /usr/lib64/libCGAL_ImageIO.so.13
 /usr/lib64/libCGAL_ImageIO.so.13.0.2
+/usr/lib64/libCGAL_Qt5.so.13
+/usr/lib64/libCGAL_Qt5.so.13.0.2
 
 %files license
 %defattr(0644,root,root,0755)
