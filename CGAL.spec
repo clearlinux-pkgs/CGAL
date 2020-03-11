@@ -4,7 +4,7 @@
 #
 Name     : CGAL
 Version  : 4.14.3
-Release  : 8
+Release  : 9
 URL      : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14.3/CGAL-4.14.3.tar.xz
 Source0  : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14.3/CGAL-4.14.3.tar.xz
 Summary  : Computational Geometry Algorithms Library
@@ -27,12 +27,9 @@ BuildRequires : qtbase-dev mesa-dev
 BuildRequires : zlib-dev
 
 %description
-These demos use Geomview
-[see the chapter Geomview in the cgal manual - support library:
-Geomview 1.8.1 is required.  The geomview command must be in the user's $PATH,
-otherwise the program will not be able to execute.]
-------- gv_interpolation_2 -------------------------------------------------
-using Geomview
+The Computational Geometry Algorithms Library (CGAL) is a C++ library that aims
+to provide easy access to efficient and reliable algorithms in computational
+geometry.
 
 %package bin
 Summary: bin components for the CGAL package.
@@ -49,7 +46,6 @@ Group: Development
 Requires: CGAL-lib = %{version}-%{release}
 Requires: CGAL-bin = %{version}-%{release}
 Provides: CGAL-devel = %{version}-%{release}
-Requires: CGAL = %{version}-%{release}
 Requires: CGAL = %{version}-%{release}
 
 %description dev
@@ -107,10 +103,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582653849
+export SOURCE_DATE_EPOCH=1583887359
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -119,18 +114,19 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-%cmake ..
+%cmake .. -DCMAKE_INSTALL_LIBDIR=lib64
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1582653849
+export SOURCE_DATE_EPOCH=1583887359
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/CGAL
 cp %{_builddir}/CGAL-4.14.3/LICENSE.BSL %{buildroot}/usr/share/package-licenses/CGAL/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
 cp %{_builddir}/CGAL-4.14.3/LICENSE.FREE_USE %{buildroot}/usr/share/package-licenses/CGAL/bf72f5b4704d1db5c84ca12f488e6e52bfa6d546
 cp %{_builddir}/CGAL-4.14.3/LICENSE.GPL %{buildroot}/usr/share/package-licenses/CGAL/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 cp %{_builddir}/CGAL-4.14.3/LICENSE.LGPL %{buildroot}/usr/share/package-licenses/CGAL/f45ee1c765646813b442ca58de72e20a64a7ddba
+cp %{_builddir}/CGAL-4.14.3/include/CGAL/license.h %{buildroot}/usr/share/package-licenses/CGAL/21864221c85b4e287c281a9e28679a37e42d6ffc
 cp %{_builddir}/CGAL-4.14.3/src/CGAL_ImageIO/LICENSE %{buildroot}/usr/share/package-licenses/CGAL/535114bd14e7065f571bc0530faedabef2f3bb78
 pushd clr-build
 %make_install
@@ -3444,6 +3440,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/CGAL/21864221c85b4e287c281a9e28679a37e42d6ffc
 /usr/share/package-licenses/CGAL/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
 /usr/share/package-licenses/CGAL/535114bd14e7065f571bc0530faedabef2f3bb78
 /usr/share/package-licenses/CGAL/8624bcdae55baeef00cd11d5dfcfa60f68710a02
