@@ -4,7 +4,7 @@
 #
 Name     : CGAL
 Version  : 4.14.3
-Release  : 9
+Release  : 10
 URL      : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14.3/CGAL-4.14.3.tar.xz
 Source0  : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14.3/CGAL-4.14.3.tar.xz
 Summary  : Computational Geometry Algorithms Library
