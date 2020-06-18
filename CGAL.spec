@@ -4,7 +4,7 @@
 #
 Name     : CGAL
 Version  : 4.14.3
-Release  : 10
+Release  : 11
 URL      : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14.3/CGAL-4.14.3.tar.xz
 Source0  : https://github.com/CGAL/cgal/releases/download/releases%2FCGAL-4.14.3/CGAL-4.14.3.tar.xz
 Summary  : Computational Geometry Algorithms Library
@@ -14,15 +14,19 @@ Requires: CGAL-bin = %{version}-%{release}
 Requires: CGAL-lib = %{version}-%{release}
 Requires: CGAL-license = %{version}-%{release}
 Requires: CGAL-man = %{version}-%{release}
+BuildRequires : CGAL-dev
+BuildRequires : VTK-dev
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : doxygen
+BuildRequires : eigen-data
 BuildRequires : glibc-dev
 BuildRequires : gmp-dev
 BuildRequires : mesa-dev
 BuildRequires : mpfr-dev
 BuildRequires : openblas
+BuildRequires : opencv-dev
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : zlib-dev
 
@@ -103,7 +107,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583887359
+export SOURCE_DATE_EPOCH=1592452278
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -111,15 +115,15 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake .. -DCMAKE_INSTALL_LIBDIR=lib64
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583887359
+export SOURCE_DATE_EPOCH=1592452278
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/CGAL
 cp %{_builddir}/CGAL-4.14.3/LICENSE.BSL %{buildroot}/usr/share/package-licenses/CGAL/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
