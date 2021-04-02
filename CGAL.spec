@@ -4,14 +4,13 @@
 #
 Name     : CGAL
 Version  : 5.2.1
-Release  : 14
+Release  : 15
 URL      : https://github.com/CGAL/cgal/releases/download/v5.2.1/CGAL-5.2.1.tar.xz
 Source0  : https://github.com/CGAL/cgal/releases/download/v5.2.1/CGAL-5.2.1.tar.xz
 Summary  : Computational Geometry Algorithms Library
 Group    : Development/Tools
 License  : BSL-1.0 GPL-3.0 LGPL-3.0 MIT
 Requires: CGAL-bin = %{version}-%{release}
-Requires: CGAL-lib = %{version}-%{release}
 Requires: CGAL-license = %{version}-%{release}
 Requires: CGAL-man = %{version}-%{release}
 BuildRequires : CGAL-dev
@@ -46,7 +45,6 @@ bin components for the CGAL package.
 %package dev
 Summary: dev components for the CGAL package.
 Group: Development
-Requires: CGAL-lib = %{version}-%{release}
 Requires: CGAL-bin = %{version}-%{release}
 Provides: CGAL-devel = %{version}-%{release}
 Requires: CGAL = %{version}-%{release}
@@ -70,15 +68,6 @@ Group: Default
 
 %description extras
 extras components for the CGAL package.
-
-
-%package lib
-Summary: lib components for the CGAL package.
-Group: Libraries
-Requires: CGAL-license = %{version}-%{release}
-
-%description lib
-lib components for the CGAL package.
 
 
 %package license
@@ -106,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1617212883
+export SOURCE_DATE_EPOCH=1617388400
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -117,13 +106,12 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-%cmake .. -DCMAKE_INSTALL_LIBDIR=lib64 \
--DCGAL_HEADER_ONLY=FALSE
+%cmake .. -DCMAKE_INSTALL_LIBDIR=lib64
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1617212883
+export SOURCE_DATE_EPOCH=1617388400
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/CGAL
 cp %{_builddir}/CGAL-5.2.1/LICENSE %{buildroot}/usr/share/package-licenses/CGAL/402607b6b02714a628b7e0e0012e81658a015c62
@@ -2825,7 +2813,6 @@ popd
 /usr/include/CGAL/circulator_bases.h
 /usr/include/CGAL/cluster_point_set.h
 /usr/include/CGAL/compare_vertices.h
-/usr/include/CGAL/compiler_config.h
 /usr/include/CGAL/compute_average_spacing.h
 /usr/include/CGAL/compute_outer_frame_margin.h
 /usr/include/CGAL/config.h
@@ -3353,37 +3340,26 @@ popd
 /usr/include/CGAL/wlop_simplify_and_regularize_point_set.h
 /usr/include/CGAL/wmult.h
 /usr/lib64/cmake/CGAL/CGALConfig.cmake
+/usr/lib64/cmake/CGAL/CGALConfigBuildVersion.cmake
 /usr/lib64/cmake/CGAL/CGALConfigVersion.cmake
 /usr/lib64/cmake/CGAL/CGALConfigVersion_binary_header_only.cmake.in
 /usr/lib64/cmake/CGAL/CGALConfig_binary.cmake.in
 /usr/lib64/cmake/CGAL/CGALConfig_binary_header_only.cmake.in
 /usr/lib64/cmake/CGAL/CGALConfig_install.cmake.in
-/usr/lib64/cmake/CGAL/CGALExports-relwithdebinfo.cmake
-/usr/lib64/cmake/CGAL/CGALExports.cmake
-/usr/lib64/cmake/CGAL/CGALLibConfig.cmake
 /usr/lib64/cmake/CGAL/CGALLibConfig.cmake.in
 /usr/lib64/cmake/CGAL/CGAL_Boost_iostreams_support.cmake
 /usr/lib64/cmake/CGAL/CGAL_Boost_serialization_support.cmake
 /usr/lib64/cmake/CGAL/CGAL_CheckCXXFileRuns.cmake
 /usr/lib64/cmake/CGAL/CGAL_Common.cmake
-/usr/lib64/cmake/CGAL/CGAL_CoreExports-relwithdebinfo.cmake
-/usr/lib64/cmake/CGAL/CGAL_CoreExports.cmake
-/usr/lib64/cmake/CGAL/CGAL_CoreLibConfig.cmake
 /usr/lib64/cmake/CGAL/CGAL_CreateSingleSourceCGALProgram.cmake
 /usr/lib64/cmake/CGAL/CGAL_Eigen3_support.cmake
 /usr/lib64/cmake/CGAL/CGAL_Eigen_support.cmake
 /usr/lib64/cmake/CGAL/CGAL_GLPK_support.cmake
 /usr/lib64/cmake/CGAL/CGAL_GeneratorSpecificSettings.cmake
-/usr/lib64/cmake/CGAL/CGAL_ImageIOExports-relwithdebinfo.cmake
-/usr/lib64/cmake/CGAL/CGAL_ImageIOExports.cmake
-/usr/lib64/cmake/CGAL/CGAL_ImageIOLibConfig.cmake
 /usr/lib64/cmake/CGAL/CGAL_LASLIB_support.cmake
 /usr/lib64/cmake/CGAL/CGAL_Macros.cmake
 /usr/lib64/cmake/CGAL/CGAL_OpenCV_support.cmake
 /usr/lib64/cmake/CGAL/CGAL_OpenGR_support.cmake
-/usr/lib64/cmake/CGAL/CGAL_Qt5Exports-relwithdebinfo.cmake
-/usr/lib64/cmake/CGAL/CGAL_Qt5Exports.cmake
-/usr/lib64/cmake/CGAL/CGAL_Qt5LibConfig.cmake
 /usr/lib64/cmake/CGAL/CGAL_Qt5_moc_and_resource_files.cmake
 /usr/lib64/cmake/CGAL/CGAL_SCIP_support.cmake
 /usr/lib64/cmake/CGAL/CGAL_SCM.cmake
@@ -3520,9 +3496,6 @@ popd
 /usr/lib64/cmake/CGAL/run_cmd_redirection_cerr.cmake
 /usr/lib64/cmake/CGAL/run_test_with_cin.cmake
 /usr/lib64/cmake/CGAL/test_MPFI.cpp
-/usr/lib64/libCGAL.so
-/usr/lib64/libCGAL_Core.so
-/usr/lib64/libCGAL_ImageIO.so
 
 %files doc
 %defattr(0644,root,root,0755)
@@ -3602,18 +3575,6 @@ popd
 /usr/include/CGAL/Qt/vec.h
 /usr/include/CGAL/Qt/vec_impl.h
 /usr/include/CGAL/Qt/viewer_actions.h
-/usr/lib64/libCGAL_Qt5.so
-/usr/lib64/libCGAL_Qt5.so.14
-/usr/lib64/libCGAL_Qt5.so.14.0.0
-
-%files lib
-%defattr(-,root,root,-)
-/usr/lib64/libCGAL.so.13
-/usr/lib64/libCGAL.so.13.0.3
-/usr/lib64/libCGAL_Core.so.13
-/usr/lib64/libCGAL_Core.so.13.0.3
-/usr/lib64/libCGAL_ImageIO.so.14
-/usr/lib64/libCGAL_ImageIO.so.14.0.0
 
 %files license
 %defattr(0644,root,root,0755)
